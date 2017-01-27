@@ -17,33 +17,21 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configTableView()
-        
-        let url = URL(string: "https://itunes.apple.com/us/rss/topsongs/limit=10/json")!
-        let dataTask = URLSession.shared.dataTask(with: url) {
-            data, response, error in
-            if error != nil {
-                print(error!)
-                return
-            }
-
-            let jsonData = JSON(data: data!)
-            let feed = jsonData["feed"]
-            
-            print(feed)
-        }
-        dataTask.resume()
+        configTableView()    
     }
     
     func configTableView() {
         let nib = UINib(nibName: "SongCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: kSongCell)
         
-        dataSource = SongTableDataSource()
-        tableView.dataSource = dataSource
-        
         delegate = SongTableDelegate()
         tableView.delegate = delegate
+        
+        dataSource = SongTableDataSource()
+        dataSource.tableView = tableView
+        tableView.dataSource = dataSource
+        
+        dataSource.getSongs()
     }
 }
 

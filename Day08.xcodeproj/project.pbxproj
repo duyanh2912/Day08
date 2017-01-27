@@ -34,7 +34,7 @@
 		5007EDC11E3B2F0C00B5BA89 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDAB1E3B2F0C00B5BA89 /* UIView.swift */; };
 		5007EDD41E3B31F900B5BA89 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDCE1E3B31F900B5BA89 /* SongCell.swift */; };
 		5007EDD51E3B31F900B5BA89 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5007EDCF1E3B31F900B5BA89 /* SongCell.xib */; };
-		5007EDD61E3B31F900B5BA89 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDD11E3B31F900B5BA89 /* SongModel.swift */; };
+		5007EDD61E3B31F900B5BA89 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDD11E3B31F900B5BA89 /* Song.swift */; };
 		5007EDD71E3B31F900B5BA89 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDD31E3B31F900B5BA89 /* SwiftyJSON.swift */; };
 		5007EDDC1E3B325B00B5BA89 /* SongTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDDB1E3B325B00B5BA89 /* SongTableDelegate.swift */; };
 		5007EDDE1E3B326500B5BA89 /* SongTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDDD1E3B326500B5BA89 /* SongTableDataSource.swift */; };
@@ -98,7 +98,7 @@
 		5007EDC41E3B2F3800B5BA89 /* Day08-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Day08-Bridging-Header.h"; sourceTree = "<group>"; };
 		5007EDCE1E3B31F900B5BA89 /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		5007EDCF1E3B31F900B5BA89 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
-		5007EDD11E3B31F900B5BA89 /* SongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		5007EDD11E3B31F900B5BA89 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		5007EDD31E3B31F900B5BA89 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5007EDDB1E3B325B00B5BA89 /* SongTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableDelegate.swift; sourceTree = "<group>"; };
 		5007EDDD1E3B326500B5BA89 /* SongTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableDataSource.swift; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 		5007EDD01E3B31F900B5BA89 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5007EDD11E3B31F900B5BA89 /* SongModel.swift */,
+				5007EDD11E3B31F900B5BA89 /* Song.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -430,7 +430,7 @@
 				5007EDDC1E3B325B00B5BA89 /* SongTableDelegate.swift in Sources */,
 				508BBED01E31081E0061F16D /* ViewController.swift in Sources */,
 				5007EDD41E3B31F900B5BA89 /* SongCell.swift in Sources */,
-				5007EDD61E3B31F900B5BA89 /* SongModel.swift in Sources */,
+				5007EDD61E3B31F900B5BA89 /* Song.swift in Sources */,
 				5007EDD71E3B31F900B5BA89 /* SwiftyJSON.swift in Sources */,
 				508BBECE1E31081E0061F16D /* AppDelegate.swift in Sources */,
 				5007EDDE1E3B326500B5BA89 /* SongTableDataSource.swift in Sources */,
@@ -647,6 +647,7 @@
 				5007ED8D1E3B2EFA00B5BA89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		508BBEC51E31081E0061F16D /* Build configuration list for PBXProject "Day08" */ = {
 			isa = XCConfigurationList;

@@ -11,6 +11,6 @@ import UIKit
 
 class SongTableDelegate: NSObject, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 66
+        return 64
     }
 }
