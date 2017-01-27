@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataSource: SongTableDataSource!
     var delegate: SongTableDelegate!
-
+    
     override func viewDidLoad() {
+        navigationController?.navigationBar.barStyle = .blackOpaque
+        navigationController?.navigationBar.tintColor = .white
         super.viewDidLoad()
         configTableView()    
     }

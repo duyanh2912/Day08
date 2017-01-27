@@ -33,13 +33,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automaton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geI-9b-C65">
                                 <rect key="frame" x="0.0" y="0.0" width="181.5" height="16.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jamiroquai - Automation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fia-ob-efX">
                                 <rect key="frame" x="0.0" y="16.5" width="181.5" height="16.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.54826166152366562" green="0.92070510786802029" blue="0.9046050279019765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -49,11 +49,11 @@
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                         <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
                         <state key="normal" title="109.000d">
-                            <color key="titleColor" red="0.21176470588235294" green="0.50196078431372548" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.98823529409999999" green="0.87988343729999996" blue="0.46013721740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.21176470588235294" green="0.50196078431372548" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.9882352941176471" green="0.87988343729175666" blue="0.46013721736586488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                 <real key="value" value="1"/>
@@ -67,6 +67,7 @@
                         </connections>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="JlE-uf-saW" secondAttribute="bottom" constant="8" id="0JX-cT-zj8"/>
                     <constraint firstItem="JlE-uf-saW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4Mj-Ks-2FG"/>
@@ -79,6 +80,7 @@
                     <constraint firstAttribute="leading" secondItem="JlE-uf-saW" secondAttribute="leading" constant="-14" id="sSE-Mk-BLR"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="buyButton" destination="w0q-r3-uT3" id="iTL-75-dIc"/>
                 <outlet property="songArtist" destination="fia-ob-efX" id="dhS-TY-4oM"/>
