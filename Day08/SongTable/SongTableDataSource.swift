@@ -14,7 +14,7 @@ class SongTableDataSource: NSObject, UITableViewDataSource {
     var songs: [Song] = []
     
     func getSongs() {
-        let url = URL(string: "https://itunes.apple.com/vn/rss/topsongs/limit=50/json")!
+        let url = URL(string: "https://itunes.apple.com/us/rss/topsongs/limit=50/json")!
         let dataTask = URLSession.shared.dataTask(with: url) { [unowned self]
             data, response, error in
             if error != nil {
@@ -23,20 +23,25 @@ class SongTableDataSource: NSObject, UITableViewDataSource {
             }
             
             DispatchQueue.global().async { [unowned self] in
-                let entry = JSON(data: data!)["feed"]["entry"]
-                for (index,song) in entry.arrayValue.enumerated() {
-                    let name = song["im:name"]["label"].stringValue
-                    let artist = song["im:artist"]["label"].stringValue
-                    let price = song["im:price"]["label"].stringValue
-                    let imageLink = song["im:image"][2]["label"].stringValue
-                    let album = song["im:collection"]["im:name"]["label"].stringValue
+                do {
+                    let entry = try JSON(data: data!)["feed"]["entry"]
                     
-                    let songToBeAdded = Song(name: name, artist: artist, imageLink: imageLink, price: price, album: album)
-                    self.songs.append(songToBeAdded)
-                    
-                    DispatchQueue.main.sync { [unowned self] in
-                        self.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                    for (index,song) in entry.arrayValue.enumerated() {
+                        let name = song["im:name"]["label"].stringValue
+                        let artist = song["im:artist"]["label"].stringValue
+                        let price = song["im:price"]["label"].stringValue
+                        let imageLink = song["im:image"][2]["label"].stringValue
+                        let album = song["im:collection"]["im:name"]["label"].stringValue
+                        
+                        let songToBeAdded = Song(name: name, artist: artist, imageLink: imageLink, price: price, album: album)
+                        self.songs.append(songToBeAdded)
+                        
+                        DispatchQueue.main.sync { [unowned self] in
+                            self.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                        }
                     }
+                } catch {
+                    print("Can't load JSON data")
                 }
             }
         }
@@ -53,7 +58,9 @@ class SongTableDataSource: NSObject, UITableViewDataSource {
         
         DispatchQueue.global().async {
             let image = AlbumImageManager.shared.getImage(artist: song.artist, album: song.album, imageLink: song.imageLink)
+            
             DispatchQueue.main.sync {
+                guard tableView.indexPath(for: cell) == indexPath else { return }
                 cell.songImage.image = image
             }
         }

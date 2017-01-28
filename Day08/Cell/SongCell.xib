@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="180x180" translatesAutoresizingMaskIntoConstraints="NO" id="JlE-uf-saW">
@@ -28,16 +28,16 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="VXF-Kq-TBv">
-                        <rect key="frame" x="69.5" y="15.5" width="195.5" height="33"/>
+                        <rect key="frame" x="69.5" y="15.5" width="188" height="33"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automaton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geI-9b-C65">
-                                <rect key="frame" x="0.0" y="0.0" width="195.5" height="16.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="188" height="16.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jamiroquai - Automation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fia-ob-efX">
-                                <rect key="frame" x="0.0" y="16.5" width="195.5" height="16.5"/>
+                                <rect key="frame" x="0.0" y="16.5" width="188" height="16.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.54826166152366562" green="0.92070510786802029" blue="0.9046050279019765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -78,9 +78,9 @@
                     <constraint firstItem="w0q-r3-uT3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8Ag-SX-6uZ"/>
                     <constraint firstAttribute="trailing" secondItem="w0q-r3-uT3" secondAttribute="trailing" constant="14" id="Col-LU-ida"/>
                     <constraint firstItem="VXF-Kq-TBv" firstAttribute="height" secondItem="JlE-uf-saW" secondAttribute="height" multiplier="0.7" id="PAp-Aw-CLI"/>
-                    <constraint firstAttribute="trailing" secondItem="VXF-Kq-TBv" secondAttribute="trailing" constant="110" id="V5G-II-I6S"/>
                     <constraint firstItem="VXF-Kq-TBv" firstAttribute="leading" secondItem="JlE-uf-saW" secondAttribute="trailing" constant="8" id="W4P-Ib-yzG"/>
                     <constraint firstAttribute="leading" secondItem="JlE-uf-saW" secondAttribute="leading" constant="-14" id="sSE-Mk-BLR"/>
+                    <constraint firstItem="w0q-r3-uT3" firstAttribute="leading" secondItem="VXF-Kq-TBv" secondAttribute="trailing" constant="23.5" id="sdi-Zu-RmF"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

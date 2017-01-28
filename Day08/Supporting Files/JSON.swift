@@ -11,9 +11,14 @@ import Foundation
 struct JSON {
     var object: Any
     
-    init(data: Data) {
-        let jsonData = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-        self.object = jsonData
+    init(data: Data) throws {
+        do {
+        let jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            self.object = jsonData
+        }
+        catch {
+            throw error
+        }
     }
     
     private init(object: Any) {
