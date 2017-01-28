@@ -35,7 +35,6 @@
 		5007EDD41E3B31F900B5BA89 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDCE1E3B31F900B5BA89 /* SongCell.swift */; };
 		5007EDD51E3B31F900B5BA89 /* SongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5007EDCF1E3B31F900B5BA89 /* SongCell.xib */; };
 		5007EDD61E3B31F900B5BA89 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDD11E3B31F900B5BA89 /* Song.swift */; };
-		5007EDD71E3B31F900B5BA89 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDD31E3B31F900B5BA89 /* SwiftyJSON.swift */; };
 		5007EDDC1E3B325B00B5BA89 /* SongTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDDB1E3B325B00B5BA89 /* SongTableDelegate.swift */; };
 		5007EDDE1E3B326500B5BA89 /* SongTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5007EDDD1E3B326500B5BA89 /* SongTableDataSource.swift */; };
 		508BBECE1E31081E0061F16D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508BBECD1E31081E0061F16D /* AppDelegate.swift */; };
@@ -43,6 +42,7 @@
 		508BBED31E31081E0061F16D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508BBED11E31081E0061F16D /* Main.storyboard */; };
 		508BBED51E31081E0061F16D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 508BBED41E31081E0061F16D /* Assets.xcassets */; };
 		508BBED81E31081E0061F16D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508BBED61E31081E0061F16D /* LaunchScreen.storyboard */; };
+		509E83671E3CDEEC00E3946A /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509E83661E3CDEEC00E3946A /* JSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +99,6 @@
 		5007EDCE1E3B31F900B5BA89 /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 		5007EDCF1E3B31F900B5BA89 /* SongCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongCell.xib; sourceTree = "<group>"; };
 		5007EDD11E3B31F900B5BA89 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		5007EDD31E3B31F900B5BA89 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5007EDDB1E3B325B00B5BA89 /* SongTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableDelegate.swift; sourceTree = "<group>"; };
 		5007EDDD1E3B326500B5BA89 /* SongTableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableDataSource.swift; sourceTree = "<group>"; };
 		508BBECA1E31081E0061F16D /* Day08.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Day08.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +108,7 @@
 		508BBED41E31081E0061F16D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		508BBED71E31081E0061F16D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		508BBED91E31081E0061F16D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		509E83661E3CDEEC00E3946A /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,7 +229,7 @@
 		5007EDD21E3B31F900B5BA89 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5007EDD31E3B31F900B5BA89 /* SwiftyJSON.swift */,
+				509E83661E3CDEEC00E3946A /* JSON.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -431,9 +431,9 @@
 				508BBED01E31081E0061F16D /* ViewController.swift in Sources */,
 				5007EDD41E3B31F900B5BA89 /* SongCell.swift in Sources */,
 				5007EDD61E3B31F900B5BA89 /* Song.swift in Sources */,
-				5007EDD71E3B31F900B5BA89 /* SwiftyJSON.swift in Sources */,
 				508BBECE1E31081E0061F16D /* AppDelegate.swift in Sources */,
 				5007EDDE1E3B326500B5BA89 /* SongTableDataSource.swift in Sources */,
+				509E83671E3CDEEC00E3946A /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
