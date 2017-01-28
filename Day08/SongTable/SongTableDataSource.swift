@@ -22,21 +22,19 @@ class SongTableDataSource: NSObject, UITableViewDataSource {
                 return
             }
             
-            DispatchQueue.global().async {
+            DispatchQueue.global().async { [unowned self] in
                 let entry = JSON(data: data!)["feed"]["entry"]
                 for (index,song) in entry.arrayValue.enumerated() {
                     let name = song["im:name"]["label"].stringValue
                     let artist = song["im:artist"]["label"].stringValue
                     let price = song["im:price"]["label"].stringValue
-                    let imageLink = song["im:image"][0]["label"].stringValue
+                    let imageLink = song["im:image"][2]["label"].stringValue
+                    let album = song["im:collection"]["im:name"]["label"].stringValue
                     
-                    let songToBeAdded = Song(name: name, artist: artist, image: UIImage(), price: price)
+                    let songToBeAdded = Song(name: name, artist: artist, imageLink: imageLink, price: price, album: album)
                     self.songs.append(songToBeAdded)
                     
-                    let imageData = try! Data(contentsOf: URL(string: imageLink)!)
-                    songToBeAdded.image = UIImage(data: imageData)!
-                
-                    DispatchQueue.main.sync {
+                    DispatchQueue.main.sync { [unowned self] in
                         self.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .fade)
                     }
                 }
@@ -48,10 +46,18 @@ class SongTableDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kSongCell, for: indexPath) as! SongCell
         let song = songs[indexPath.row]
-        cell.songImage.image = song.image
+        
         cell.songName.text = song.name
         cell.songArtist.text = song.artist
         cell.buyButton.setTitle(song.price, for: .normal)
+        
+        DispatchQueue.global().async {
+            let image = AlbumImageManager.shared.getImage(artist: song.artist, album: song.album, imageLink: song.imageLink)
+            DispatchQueue.main.sync {
+                cell.songImage.image = image
+            }
+        }
+        
         return cell
     }
     

@@ -43,6 +43,7 @@
 		508BBED51E31081E0061F16D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 508BBED41E31081E0061F16D /* Assets.xcassets */; };
 		508BBED81E31081E0061F16D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508BBED61E31081E0061F16D /* LaunchScreen.storyboard */; };
 		509E83671E3CDEEC00E3946A /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509E83661E3CDEEC00E3946A /* JSON.swift */; };
+		509E83691E3CEC0100E3946A /* AlbumImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509E83681E3CEC0100E3946A /* AlbumImageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		508BBED71E31081E0061F16D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		508BBED91E31081E0061F16D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		509E83661E3CDEEC00E3946A /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		509E83681E3CEC0100E3946A /* AlbumImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumImageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				509E83661E3CDEEC00E3946A /* JSON.swift */,
+				509E83681E3CEC0100E3946A /* AlbumImageManager.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				5007EDDC1E3B325B00B5BA89 /* SongTableDelegate.swift in Sources */,
 				508BBED01E31081E0061F16D /* ViewController.swift in Sources */,
 				5007EDD41E3B31F900B5BA89 /* SongCell.swift in Sources */,
+				509E83691E3CEC0100E3946A /* AlbumImageManager.swift in Sources */,
 				5007EDD61E3B31F900B5BA89 /* Song.swift in Sources */,
 				508BBECE1E31081E0061F16D /* AppDelegate.swift in Sources */,
 				5007EDDE1E3B326500B5BA89 /* SongTableDataSource.swift in Sources */,

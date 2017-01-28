@@ -9,15 +9,17 @@
 import Foundation
 
 class Song: NSObject {
-    var image: UIImage
+    var imageLink: String
     var artist: String
     var name: String
     var price: String
+    var album: String
     
-    init(name: String, artist: String, image: UIImage, price: String) {
+    init(name: String, artist: String, imageLink: String, price: String, album: String) {
         self.name = name
         self.artist = artist
-        self.image = image
+        self.imageLink = imageLink
         self.price = price
+        self.album = album
     }
 }
