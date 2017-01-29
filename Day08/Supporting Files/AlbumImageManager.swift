@@ -33,11 +33,12 @@ class AlbumImageManager {
             return image
         } else {
             downloadImage(artist: artist, album: album, imageLink: imageLink) {
+                [unowned self]
                 (completion, error) in
                 if error != nil {
                     print(error!)
                 } else {
-                    image = getImageLocally(artist: artist, album: album)
+                    image = self.getImageLocally(artist: artist, album: album)
                 }
             }
             return image
@@ -55,7 +56,7 @@ class AlbumImageManager {
         return nil
     }
     
-    func downloadImage(artist: String, album: String, imageLink: String?, completed: (Bool, String?) -> ()) {
+    func downloadImage(artist: String, album: String, imageLink: String?, completed: @escaping (Bool, String?) -> ()) {
         let path = storagePath + "/" + artist + " - " + album + ".png"
         
         if FileManager.default.fileExists(atPath: path) {
