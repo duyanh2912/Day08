@@ -12,7 +12,7 @@ class AlbumImageManager {
     static let shared = AlbumImageManager()
     
     var storagePath: String {
-        var path = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
+        var path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
         path += "/Album Images"
         return path
     }
