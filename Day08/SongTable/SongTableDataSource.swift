@@ -52,13 +52,13 @@ class SongTableDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: kSongCell, for: indexPath) as! SongCell
         let song = songs[indexPath.row]
         
+        cell.songImage.image = nil
         cell.songName.text = song.name
         cell.songArtist.text = song.artist
         cell.buyButton.setTitle(song.price, for: .normal)
         
-        DispatchQueue.global().async {
-            let image = AlbumImageManager.shared.getImage(artist: song.artist, album: song.album, imageLink: song.imageLink)
-            
+        DispatchQueue.global(qos: .userInteractive).async {
+            let image = AlbumImageManager.shared.getImageOrDownloadIfNeeded(artist: song.artist, album: song.album, imageLink: song.imageLink)
             DispatchQueue.main.sync {
                 guard tableView.indexPath(for: cell) == indexPath else { return }
                 cell.songImage.image = image
