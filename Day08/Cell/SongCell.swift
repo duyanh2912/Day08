@@ -51,4 +51,19 @@ class SongCell: UITableViewCell {
             }
         }, completion: nil)
     }
+    
+    func config(with song: Song, tableView: UITableView, indexPath: IndexPath) {
+        self.songImage.image = nil
+        self.songName.text = song.name
+        self.songArtist.text = song.artist
+        self.buyButton.setTitle(song.price, for: .normal)
+        DispatchQueue.global().async {
+            if let image = AlbumImageManager.shared.getImageOrDownloadIfNeeded(artist: song.artist, album: song.album, imageLink: song.imageLink) {
+                DispatchQueue.main.sync {
+                    guard tableView.indexPath(for: self) == indexPath else { return }
+                    self.songImage.image = image
+                }
+            }
+        }
+    }
 }

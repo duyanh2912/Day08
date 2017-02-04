@@ -7,33 +7,49 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+import RxDataSources
 
 let kSongCell = "SongCell"
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var dataSource: SongTableDataSource!
-    var delegate: SongTableDelegate!
+    lazy var dataSource = SongTableDataSource()
+    lazy var delegate = SongTableDelegate()
+    
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         navigationController?.navigationBar.barStyle = .blackOpaque
         navigationController?.navigationBar.tintColor = .white
         super.viewDidLoad()
-        configTableView()    
+        configTableView()
     }
     
     func configTableView() {
         let nib = UINib(nibName: "SongCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: kSongCell)
         
-        delegate = SongTableDelegate()
-        tableView.delegate = delegate
+        let dataSources = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String,Song>>()
+        dataSources.configureCell = { dt,tb,id,song in
+            let cell = tb.dequeueReusableCell(withIdentifier: kSongCell, for: id) as! SongCell
+            cell.config(with: song, tableView: tb, indexPath: id)
+            return cell
+        }
         
-        dataSource = SongTableDataSource()
-        dataSource.tableView = tableView
-        tableView.dataSource = dataSource
+        dataSource.modelObservable()
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .bindTo(tableView
+                .rx
+                .items(dataSource: dataSources))
+            .addDisposableTo(disposeBag)
         
-        dataSource.getSongs()
+        tableView
+            .rx
+            .setDelegate(delegate)
+            .addDisposableTo(disposeBag)
     }
 }
 

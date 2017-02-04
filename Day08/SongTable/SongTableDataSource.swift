@@ -8,67 +8,75 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
 
-class SongTableDataSource: NSObject, UITableViewDataSource {
+class SongTableDataSource: NSObject {
+    var disposeBag = DisposeBag()
     var tableView: UITableView!
-    var songs: [Song] = []
     
-    func getSongs() {
-        let url = URL(string: "https://itunes.apple.com/us/rss/topsongs/limit=50/json")!
-        let dataTask = URLSession.shared.dataTask(with: url) { [unowned self]
-            data, response, error in
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            DispatchQueue.global().async { [unowned self] in
-                do {
-                    let entry = try JSON(data: data!)["feed"]["entry"]
-                    
-                    for (index,song) in entry.arrayValue.enumerated() {
-                        let name = song["im:name"]["label"].stringValue
-                        let artist = song["im:artist"]["label"].stringValue
-                        let price = song["im:price"]["label"].stringValue
-                        let imageLink = song["im:image"][2]["label"].stringValue
-                        let album = song["im:collection"]["im:name"]["label"].stringValue
-                        
-                        let songToBeAdded = Song(name: name, artist: artist, imageLink: imageLink, price: price, album: album)
-                        self.songs.append(songToBeAdded)
-                        
-                        DispatchQueue.main.sync { [unowned self] in
-                            self.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-                        }
-                    }
-                } catch {
-                    print("Can't load JSON data")
-                }
-            }
+    var songs: Variable<[Song]>
+    
+    func modelObservable() -> Observable<[AnimatableSectionModel<String,Song>]> {
+        return songs.asObservable()
+            .map {
+                return [AnimatableSectionModel<String,Song>.init(model: "", items: $0)]
         }
-        dataTask.resume()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kSongCell, for: indexPath) as! SongCell
-        let song = songs[indexPath.row]
-        
-        cell.songImage.image = nil
-        cell.songName.text = song.name
-        cell.songArtist.text = song.artist
-        cell.buyButton.setTitle(song.price, for: .normal)
-        
-        DispatchQueue.global(qos: .userInteractive).async {
-            let image = AlbumImageManager.shared.getImageOrDownloadIfNeeded(artist: song.artist, album: song.album, imageLink: song.imageLink)
-            DispatchQueue.main.sync {
-                guard tableView.indexPath(for: cell) == indexPath else { return }
-                cell.songImage.image = image
+    override init() {
+        songs = Variable([])
+
+        performURLTask()
+            .flatMapLatest { (json: JSON) -> Observable<Song> in
+                return parseSongs(json: json)
             }
-        }
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
+            .scan([]) { acc, val in
+                var array = acc
+                array.append(val)
+                return array
+            }
+            .bindTo(songs)
+            .addDisposableTo(disposeBag)
     }
 }
+
+
+func performURLTask() -> Observable<JSON> {
+    let url = URL(string: "https://itunes.apple.com/vn/rss/topsongs/limit=100/json")!
+    let request = URLRequest(url: url)
+    return URLSession.shared
+        .rx
+        .data(request: request)
+        .map { data in
+            return try JSON(data: data)
+        }
+        .catchError { e in
+            print(e)
+            return Observable<JSON>.create { o in
+                o.onCompleted()
+                return Disposables.create()
+            }
+        }
+}
+
+fileprivate func parseSongs(json: JSON) -> Observable<Song> {
+    return Observable<Song>.create { o in
+        let entry = json["feed"]["entry"]
+        
+        for (_,song) in entry.arrayValue.enumerated() {
+            let name = song["im:name"]["label"].stringValue
+            let artist = song["im:artist"]["label"].stringValue
+            let price = song["im:price"]["label"].stringValue
+            let imageLink = song["im:image"][2]["label"].stringValue
+            let album = song["im:collection"]["im:name"]["label"].stringValue
+            
+            let song = Song(name: name, artist: artist, imageLink: imageLink, price: price, album: album)
+            o.onNext(song)
+        }
+        return Disposables.create()
+    }
+}
+
+
